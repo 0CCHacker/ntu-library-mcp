@@ -72,7 +72,7 @@ export const STYLES = `
   .reveal.in{opacity:1; transform:none}
 
   /* masthead */
-  header.top{position:sticky; top:0; z-index:40; background:rgba(6,9,16,.72); backdrop-filter:blur(12px); border-bottom:1px solid var(--line)}
+  header.top{position:sticky; top:0; z-index:50; background:#080B12; border-bottom:1px solid var(--line)}
   header.top .wrap{display:flex; align-items:center; justify-content:space-between; padding:15px 26px}
   .brand{display:flex; align-items:center; gap:10px; font-family:var(--mono); font-size:14px; font-weight:600; letter-spacing:.02em; color:var(--text)}
   .brand:hover{text-decoration:none}
