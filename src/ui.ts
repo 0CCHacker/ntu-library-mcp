@@ -52,9 +52,8 @@ export const STYLES = `
     --maxw: 1120px;
   }
   *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:88px}
-  /* keep anchored sections clear of the sticky header (no "đè") */
-  section[id], main[id], [id="story"], [id="setup"], [id="uses"], [id="how"], [id="included"], [id="plays"], [id="skill"], [id="technique"], [id="start"], [id="demo"]{scroll-margin-top:88px}
+  html{-webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:20px}
+  section[id], main[id]{scroll-margin-top:20px}
   body{margin:0; background:
       radial-gradient(1100px 700px at 78% -6%, rgba(58,225,255,.10), transparent 60%),
       radial-gradient(900px 600px at 8% 8%, rgba(167,139,250,.08), transparent 55%),
@@ -72,8 +71,8 @@ export const STYLES = `
   .reveal.in{opacity:1; transform:none}
 
   /* masthead */
-  header.top{position:sticky; top:0; z-index:50; background:#080B12; border-bottom:1px solid var(--line); transition:transform .28s ease}
-  header.top.tuck{transform:translateY(-100%)}
+  /* static top bar — its own block above the content, never overlays it */
+  header.top{position:relative; z-index:50; background:#080B12; border-bottom:1px solid var(--line)}
   header.top .wrap{display:flex; align-items:center; justify-content:space-between; padding:15px 26px}
   .brand{display:flex; align-items:center; gap:10px; font-family:var(--mono); font-size:14px; font-weight:600; letter-spacing:.02em; color:var(--text)}
   .brand:hover{text-decoration:none}
@@ -532,19 +531,6 @@ export function setupTabs(cfg: McpConfigs): string {
 export const SHARED_SCRIPT = `<script>
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Auto-hide the sticky header when scrolling down (reveal on scroll up / at top)
-  // so it never sits over the content you're reading.
-  var hdr = document.querySelector('header.top');
-  if (hdr) {
-    var lastY = window.pageYOffset || 0;
-    window.addEventListener('scroll', function(){
-      var y = window.pageYOffset || 0;
-      if (y > 160 && y > lastY + 4) hdr.classList.add('tuck');
-      else if (y < lastY - 4 || y < 80) hdr.classList.remove('tuck');
-      lastY = y;
-    }, { passive: true });
-  }
 
   var tabs=document.querySelectorAll('.tab'), panels=document.querySelectorAll('.panel');
   tabs.forEach(function(t){ t.addEventListener('click',function(){
