@@ -25,7 +25,7 @@ export interface Skill {
 }
 
 const READ_RULE =
-  "Read the abstracts before recommending, summarise what each source argues, and tell me how to access each (open access, NTU login, or print).";
+  "Read the abstracts before recommending, summarise what each source argues, and tell me how to access each (open access, NTU login, or print). Only recommend sources the tools actually return — don't add any from your own memory or invent DOIs.";
 
 export const SKILLS: Skill[] = [
   {

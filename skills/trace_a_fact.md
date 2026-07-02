@@ -29,6 +29,6 @@ the whole instruction — the skill expands it for you.
 
 The skill sends this instruction to the assistant (`{…}` filled with your input):
 
-> Find the original, citable research behind this fact and give me the reference with a DOI or link: "{claim}". Read the abstracts before recommending, summarise what each source argues, and tell me how to access each (open access, NTU login, or print).
+> Find the original, citable research behind this fact and give me the reference with a DOI or link: "{claim}". Read the abstracts before recommending, summarise what each source argues, and tell me how to access each (open access, NTU login, or print). Only recommend sources the tools actually return — don't add any from your own memory or invent DOIs.
 
 **Drives:** `search_ntu_library`, `find_influential_research`

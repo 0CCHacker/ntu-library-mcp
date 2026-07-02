@@ -30,6 +30,6 @@ the whole instruction — the skill expands it for you.
 
 The skill sends this instruction to the assistant (`{…}` filled with your input):
 
-> Build me a reading list of {count} sources on "{topic}" using the NTU library. Mix open-access and library items, and clearly mark which I can download now. Read the abstracts before recommending, summarise what each source argues, and tell me how to access each (open access, NTU login, or print).
+> Build me a reading list of {count} sources on "{topic}" using the NTU library. Mix open-access and library items, and clearly mark which I can download now. Read the abstracts before recommending, summarise what each source argues, and tell me how to access each (open access, NTU login, or print). Only recommend sources the tools actually return — don't add any from your own memory or invent DOIs.
 
 **Drives:** `search_ntu_library`

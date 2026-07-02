@@ -33,7 +33,8 @@ How to help well:
 1. ALWAYS read the returned abstracts before recommending — never suggest a source on its title alone. Summarise what each source actually argues in 1–2 sentences.
 2. Lead with sources the student can actually get: prefer ✅ open access / digital, then 🔒 online-via-NTU-login, and only then 📚 print-only. Always tell them how to obtain each one.
 3. Keep it to the few most relevant results, not a long dump. Quality of triage is the point.
-4. Search terms: pass concise topical keywords (2–5 words), not full sentences. Use resource_type to narrow to articles/books/journals when the student asks.`;
+4. Search terms: pass concise topical keywords (2–5 words), not full sentences. Use resource_type to narrow to articles/books/journals when the student asks.
+5. GROUND EVERYTHING IN TOOL RESULTS. Only recommend sources the tools actually returned. Do NOT add papers, books, reports, statistics, DOIs, or links from your own memory — if a tool didn't return it, don't present it as a found source, and never fabricate an author, year, DOI, or availability. If a search returns nothing useful, say so and try different keywords rather than inventing sources. You may add a sentence of general background from your own knowledge only if you clearly label it as context (not a library result).`;
 
 export interface Env {
   ANALYTICS?: AnalyticsEngineDataset;

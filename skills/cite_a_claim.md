@@ -29,6 +29,6 @@ the whole instruction — the skill expands it for you.
 
 The skill sends this instruction to the assistant (`{…}` filled with your input):
 
-> Find a credible academic source in the NTU library that supports this claim, and give me a citation with a link I can open. Confirm from the abstract that it actually backs the point. Claim: "{claim}". Read the abstracts before recommending, summarise what each source argues, and tell me how to access each (open access, NTU login, or print).
+> Find a credible academic source in the NTU library that supports this claim, and give me a citation with a link I can open. Confirm from the abstract that it actually backs the point. Claim: "{claim}". Read the abstracts before recommending, summarise what each source argues, and tell me how to access each (open access, NTU login, or print). Only recommend sources the tools actually return — don't add any from your own memory or invent DOIs.
 
 **Drives:** `search_ntu_library`

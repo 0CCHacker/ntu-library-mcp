@@ -15,7 +15,9 @@ function formatRecord(r: LibraryRecord, index: number): string {
   const year = r.year ? ` (${r.year})` : "";
   lines.push(`${index}. ${r.title}${year} — ${author} [${r.type}]`);
   if (r.abstract) {
-    lines.push(`   Abstract: ${truncate(r.abstract, 320)}`);
+    // Fuller abstract so the AI can judge relevance from the search alone
+    // (call get_ntu_record for the complete text if this is still cut off).
+    lines.push(`   Abstract: ${truncate(r.abstract, 700)}`);
   }
   if (r.doi) lines.push(`   DOI: ${r.doi}`);
   lines.push(`   ${r.recommendation}`);
