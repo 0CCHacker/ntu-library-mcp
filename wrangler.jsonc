@@ -1,0 +1,50 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ntu-library-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-06-20",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true
+  },
+
+  // Clean public URL via a custom domain (zone already on this account).
+  // wrangler auto-provisions the DNS record + TLS cert on deploy.
+  "routes": [{ "pattern": "ntu-library.openskillshub.org", "custom_domain": true }],
+
+  // Static files (e.g. the demo video). Drop files in ./public and deploy;
+  // they're served at the matching path. Non-matching paths fall through to the
+  // Worker (so /, /playbook, /mcp still work). e.g. public/media/demo.mp4 → /media/demo.mp4
+  "assets": { "directory": "./public", "binding": "ASSETS" },
+
+  // McpAgent state lives in a Durable Object.
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MCP_OBJECT",
+        "class_name": "NtuLibraryMCP"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["NtuLibraryMCP"]
+    }
+  ],
+
+  // Anonymous usage tracking (SQL-queryable). No PII is ever written.
+  // NOTE: disabled until Analytics Engine is enabled for the account at
+  //   https://dash.cloudflare.com/ → Workers & Pages → Analytics Engine.
+  //   The code guards `env.ANALYTICS?.` so the Worker runs fine without it;
+  //   re-enable by uncommenting this block and redeploying.
+  // "analytics_engine_datasets": [
+  //   { "binding": "ANALYTICS", "dataset": "ntu_library_usage" }
+  // ]
+
+  // Optional KV fallback counter — uncomment after `wrangler kv namespace create USAGE_KV`
+  // and paste the generated id below:
+  // "kv_namespaces": [
+  //   { "binding": "USAGE_KV", "id": "<your-kv-namespace-id>" }
+  // ]
+}

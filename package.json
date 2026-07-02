@@ -1,0 +1,28 @@
+{
+  "name": "ntu-library-mcp-server",
+  "version": "1.0.0",
+  "description": "Remote MCP server that lets AI search NTU Singapore Library (Primo/OneSearch), read abstracts, and recommend which copy a student can actually download.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "site": "tsx scripts/serve-site.ts",
+    "skills:gen": "tsx scripts/gen-skills.ts",
+    "start": "wrangler dev"
+  },
+  "keywords": ["mcp", "cloudflare-workers", "ntu", "primo", "library", "ai"],
+  "license": "MIT",
+  "dependencies": {
+    "agents": "^0.0.109",
+    "@modelcontextprotocol/sdk": "^1.13.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250620.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "wrangler": "^4.20.0"
+  }
+}

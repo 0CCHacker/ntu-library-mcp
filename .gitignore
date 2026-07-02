@@ -1,0 +1,14 @@
+node_modules/
+.wrangler/
+.dev.vars
+dist/
+*.log
+.DS_Store
+
+# generated artifact previews (regenerate from src with the gen script)
+site-preview.html
+playbook-preview.html
+
+# heavy source recordings (only the optimized public/media/demo.mp4 is committed)
+*.mov
+*.webm
