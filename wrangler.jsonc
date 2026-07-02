@@ -42,9 +42,6 @@
   //   { "binding": "ANALYTICS", "dataset": "ntu_library_usage" }
   // ]
 
-  // Optional KV fallback counter — uncomment after `wrangler kv namespace create USAGE_KV`
-  // and paste the generated id below:
-  // "kv_namespaces": [
-  //   { "binding": "USAGE_KV", "id": "<your-kv-namespace-id>" }
-  // ]
+  // Anonymous usage counter (no PII). Powers /stats — total & per-day search counts.
+  "kv_namespaces": [{ "binding": "USAGE_KV", "id": "2e8b2077bfd348938a194922528fc10d" }]
 }

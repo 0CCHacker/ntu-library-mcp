@@ -217,10 +217,24 @@ export default {
       return NtuLibraryMCP.serveSSE("/sse").fetch(request, env, ctx);
     }
 
-    // Tiny public stats endpoint (from KV counters) for the "flex" numbers.
+    // Tiny public, anonymous stats endpoint (from KV counters) for the "flex" numbers.
     if (url.pathname === "/stats") {
-      const total = env.USAGE_KV ? Number((await env.USAGE_KV.get("total_searches")) ?? "0") : 0;
-      return Response.json({ total_searches: total, library: LIBRARY_NAME });
+      const today = new Date().toISOString().slice(0, 10);
+      const [total, todayCount] = env.USAGE_KV
+        ? await Promise.all([
+            env.USAGE_KV.get("total_searches"),
+            env.USAGE_KV.get(`searches:${today}`),
+          ])
+        : [null, null];
+      return Response.json(
+        {
+          library: LIBRARY_NAME,
+          total_searches: Number(total ?? "0") || 0,
+          searches_today: Number(todayCount ?? "0") || 0,
+          date: today,
+        },
+        { headers: { "cache-control": "no-store" } },
+      );
     }
 
     // Health check
